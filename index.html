@@ -1,0 +1,116 @@
+<html >
+<head>
+    <title>TODO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body >
+    <center>
+        <div id="head">
+            <h1>TODO APP</h1>
+        </div>
+    </center> 
+
+    
+    
+    
+    <div id="app">
+        <input type="text" id="box1" placeholder="Enter your task here"></input>
+        <button id="add">ADD</button>
+        <div id="list">
+        </div>
+        </div>
+            
+             <script>
+            // Function to save all tasks
+function saveTasks() {
+    let tasks = [];
+    document.querySelectorAll("#task-btn").forEach(btn => {
+        let hasTick = btn.nextElementSibling && btn.nextElementSibling.id === "tick";
+        tasks.push({ text: btn.textContent, completed: hasTick });
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// Function to load tasks when page loads
+function loadTasks() {
+    let savedTasks = localStorage.getItem("tasks");
+    if(savedTasks) {
+        let tasks = JSON.parse(savedTasks);
+        tasks.forEach(task => {
+            let list = document.getElementById("list");
+            let taskBtn = document.createElement("button");
+            taskBtn.id = "task-btn";
+            taskBtn.textContent = task.text;
+            
+            let deleteBtn = document.createElement("button");
+            deleteBtn.id = "delete-btn";
+            deleteBtn.textContent = "Delete";
+            
+            list.appendChild(taskBtn);
+            
+            if(task.completed) {
+                let tickImg = document.createElement('img');
+                tickImg.src = "tick.jpg";
+                tickImg.id = "tick";
+                taskBtn.after(tickImg);
+            }
+            
+            list.appendChild(deleteBtn);
+        });
+    }
+}
+
+// Load tasks on page load
+window.addEventListener("DOMContentLoaded", loadTasks);
+
+            let btn=document.getElementById("box1");
+            let add=document.getElementById("add");
+            add.addEventListener("click",(event)=>{
+                let task=btn
+                if(task.value!="")
+            {
+                    let list=document.getElementById("list");
+                    list.innerHTML +='<button id="task-btn">'+btn.value+'</button>'+'<button id="delete-btn">Delete</button>';
+                      btn.value="";
+                      saveTasks();
+                    }
+                });
+                    let list=document.getElementById("list");
+                    list.addEventListener("click",(event)=>{
+                        if(event.target.id=="task-btn")
+                        {
+                            let nextElement = event.target.nextElementSibling;
+                            if(nextElement && nextElement.id === "tick") {
+                                nextElement.remove();
+                            } else {
+                                let tickImg = document.createElement('img');
+                                tickImg.src = "tick.jpg";
+                                tickImg.id = "tick";
+                                event.target.after(tickImg);
+                            }
+                            saveTasks();
+                        }
+                        if(event.target.id=="delete-btn")
+                        {
+                            let prev = event.target.previousElementSibling;
+                            if(prev && prev.id === "tick") {
+                                prev.remove();
+                                prev = event.target.previousElementSibling;
+                            }
+                            if(prev && prev.id === "task-btn") {
+                                prev.remove();
+                            }
+                            event.target.remove();
+                            saveTasks();
+                        }
+                    });
+
+        </script>
+        
+     
+    
+ 
+</body>
+
+
+</html>

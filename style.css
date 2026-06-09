@@ -1,0 +1,79 @@
+body
+{
+    background-color:lightblue;
+}
+#class
+{
+    height:10px;
+    width:10px;
+    border-radius:50px;
+    margin-top:60px;
+    padding-top:50px;
+    display:inline;
+
+}
+h1
+{
+    display:inline-block;
+    margin-top:100px;
+    font-size:50px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#app
+{
+    background-color:blue;
+    height:450px;
+    width:700px;
+    margin-left:300px;
+}
+#box1
+{
+    text-align:center;
+    height:30px;
+    width:580px;
+    margin:1px;
+    margin-top:10px;
+    margin-left:10px;
+
+}
+#add
+{
+    height:35px;
+    width:40px;
+    background-color:lightblue;
+    
+}
+#list
+{
+    background-color:lightblue;
+    border-radius:20px;
+    border-style: solid;
+    margin:20px;
+    height:370px;
+    text-align:center;
+   
+}
+#task
+{
+    margin:10px;
+    margin-left:80px;
+}
+#task-btn
+{
+    height:30px;
+    width:460px;
+}
+#delete-btn
+{
+    margin:10px;
+    height:35px;
+    background-color:blue;
+}
+#tick
+{
+    height: 30px;
+    width: 30px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
